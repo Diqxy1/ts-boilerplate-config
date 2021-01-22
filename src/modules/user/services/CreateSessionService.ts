@@ -34,7 +34,7 @@ class CreateSessionService {
     }
 
     if (user.isActive != true) {
-      throw new AppError('User not active');
+      throw new AppError('User dont activate', 401);
     }
 
     const token = sign({}, authConfig.jwt.scret, {
