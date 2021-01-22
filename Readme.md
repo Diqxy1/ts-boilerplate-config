@@ -13,6 +13,8 @@ Instalando os tipos das dependencias de desenvolvimento
 yarn add @types/bcryptjs @types/cors @types/express @types/joi @types/jsonwebtoken @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser -D
 ```
 
+Instalando dependencias do projeto
+
 ```sh
 yarn add bcryptjs celebrate cors date-fns express express-async-errors jsonwebtoken pg reflect-metadata typeorm
 ```
