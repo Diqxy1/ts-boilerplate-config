@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateCustomersTable1611342089849 implements MigrationInterface {
+export class CreateCustomerTable1611764077199 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
@@ -20,6 +20,11 @@ export class CreateCustomersTable1611342089849 implements MigrationInterface {
           {
             name: 'email',
             type: 'varchar',
+            isUnique: true,
+          },
+          {
+            name: 'user_id',
+            type: 'uuid',
           },
           {
             name: 'created_at',
@@ -30,6 +35,15 @@ export class CreateCustomersTable1611342089849 implements MigrationInterface {
             name: 'updated_at',
             type: 'timestamp',
             default: 'now()',
+          },
+        ],
+        foreignKeys: [
+          {
+            columnNames: ['user_id'],
+            referencedColumnNames: ['id'],
+            referencedTableName: 'users',
+            onUpdate: 'CASCADE',
+            onDelete: 'CASCADE',
           },
         ],
       }),

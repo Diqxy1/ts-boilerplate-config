@@ -1,7 +1,10 @@
+import User from '@modules/user/typeorm/entities/User';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -16,6 +19,10 @@ class Customer {
 
   @Column()
   email: string;
+
+  @ManyToOne(() => User, user => user.customer)
+  @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
+  user: User;
 
   @CreateDateColumn()
   created_at: Date;

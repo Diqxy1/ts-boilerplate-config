@@ -34,6 +34,7 @@ class UsersController {
 
     return response.json(user);
   }
+
   /*
    * PUT /users/id
    */

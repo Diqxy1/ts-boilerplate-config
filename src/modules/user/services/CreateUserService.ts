@@ -1,5 +1,6 @@
 import { getCustomRepository } from 'typeorm';
 import bcrypt from 'bcryptjs';
+import { validate } from 'class-validator';
 
 import AppError from '@shared/errors/AppError';
 import User, { Gender } from '../typeorm/entities/User';
@@ -38,6 +39,13 @@ class CreateUserService {
       gender,
       isActive,
     });
+
+    const erros = await validate(user);
+
+    // working teste line erro this class-validator
+    if (erros.length > 0) {
+      throw new AppError(`${erros.map(v => v.constraints)}`, 401);
+    }
 
     // Account validation, default false
     if (!isActive) {

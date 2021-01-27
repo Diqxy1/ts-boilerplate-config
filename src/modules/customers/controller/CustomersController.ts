@@ -44,6 +44,9 @@ export default class CustomersController {
       email,
     });
 
+    // eslint-disable-next-line
+    console.log(customer);
+
     return response.json(customer);
   }
 

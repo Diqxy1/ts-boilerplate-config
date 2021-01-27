@@ -14,6 +14,15 @@ class CustomersRepository extends Repository<Customer> {
 
     return customer;
   }
+
+  public async findById(id: string): Promise<Customer | undefined> {
+    const customer = await this.findOne({
+      relations: ['user'],
+      where: { user: { id: id } },
+    });
+
+    return customer;
+  }
 }
 
 export default CustomersRepository;
